@@ -2,7 +2,7 @@
   <el-row class="el-main-navbar" :gutter="1">
     <el-col class="navbar-icon el-col-flex col-left">
       <div class="col-left-padding">
-        <img src="../assets/MetaStore.png" />
+        <img src="../assets/MetaStore.svg" />
       </div>
     </el-col>
     <el-col class="el-col-input el-col-flex col-mind">
