@@ -6,7 +6,7 @@ const netWork = [
   {
     name: 'Polygon Test',
     chainId: 80001
-  },
+  }
 ]
 const netArgs = {
   mainNet: {
@@ -18,12 +18,12 @@ const netArgs = {
         nativeCurrency: {
           name: 'MATIC',
           symbol: 'MATIC',
-          decimals: 18,
+          decimals: 18
         },
         rpcUrls: ['https://polygon-rpc.com/'],
-        blockExplorerUrls: ['https://polygonscan.com/'],
-      },
-    ],
+        blockExplorerUrls: ['https://polygonscan.com/']
+      }
+    ]
   },
   testNet: {
     method: 'wallet_addEthereumChain',
@@ -34,19 +34,19 @@ const netArgs = {
         nativeCurrency: {
           name: 'MATIC',
           symbol: 'MATIC',
-          decimals: 18,
+          decimals: 18
         },
         rpcUrls: ['https://rpc-mumbai.maticvigil.com/'],
-        blockExplorerUrls: ['https://polygonscan.com/'],
-      },
-    ],
+        blockExplorerUrls: ['https://polygonscan.com/']
+      }
+    ]
   }
 }
 
 function getNetWork (netId) {
   let net = ''
   netWork.forEach(item => {
-    if (item.chainId == netId) {
+    if (item.chainId === netId) {
       net = item
     }
   })
