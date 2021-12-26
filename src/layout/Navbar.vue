@@ -214,7 +214,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .col-left {
   width: 497px;
 }
@@ -324,11 +324,11 @@ export default {
   align-self: center;
 }
 
->>> .el-menu--horizontal {
+* >>> .el-menu--horizontal {
   border-bottom: none;
 }
 
->>> .el-submenu__icon-arrow {
+* >>> .el-submenu__icon-arrow {
   display: none;
 }
 

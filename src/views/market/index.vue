@@ -210,7 +210,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
 .market-left {
   width: 1500px;
   float: left;
@@ -264,7 +264,7 @@ h5 {
   background: inherit;
   border: none;
 }
->>> .el-select-dropdown {
+* >>> .el-select-dropdown {
   background: #000000;
   border-radius: 10px;
   border: 1px solid #000000;
