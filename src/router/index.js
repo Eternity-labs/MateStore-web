@@ -7,39 +7,39 @@ Vue.use(Router)
 export const baseRoutes = [
   {
     path: '/',
-    redirect: '/home',
+    redirect: '/home'
   },
   {
     path: '/home',
     name: 'home',
     component: () => import('@/layout/index'),
-    children:[
+    children: [
       {
         path: '/about',
         name: 'about',
-        component: () => import('@/views/about/index'),
-      },{
+        component: () => import('@/views/about/index')
+      }, {
         path: '/alpha',
         name: 'alpha',
-        component: () => import('@/views/alpha/index'),
-      },{
+        component: () => import('@/views/alpha/index')
+      }, {
         path: '/create',
         name: 'create',
-        component: () => import('@/views/create/index'),
-      },{
+        component: () => import('@/views/create/index')
+      }, {
         path: '/home',
         name: 'home',
-        component: () => import('@/views/home/index'),
-      },{
+        component: () => import('@/views/home/index')
+      }, {
         path: '/map',
         name: 'map',
-        component: () => import('@/views/map/index'),
-      },{
+        component: () => import('@/views/map/index')
+      }, {
         path: '/market',
         name: 'market',
-        component: () => import('@/views/market/index'),
+        component: () => import('@/views/market/index')
       }
-    ],
+    ]
   }
 ]
 const createRouter = () => new Router({

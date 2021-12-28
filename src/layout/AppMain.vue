@@ -42,12 +42,11 @@ export default {
     return {
 
     }
-
   },
   methods: {
-    goTo(pathName){
-      router.push({ name: pathName});
-    },
+    goTo (pathName) {
+      router.push({ name: pathName})
+    }
   }
 }
 </script>

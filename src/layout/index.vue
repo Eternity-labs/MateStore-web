@@ -9,12 +9,12 @@
 
 <script>
 
-import Navbar from "@/layout/Navbar";
-import AppMain from "@/layout/AppMain";
+import Navbar from '@/layout/Navbar'
+import AppMain from '@/layout/AppMain'
 
 export default {
   components: {Navbar, AppMain},
-  data() {
+  data () {
     return {}
   }
 }
