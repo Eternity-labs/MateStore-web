@@ -1,26 +1,33 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
 
-import './styles/index.css'
-import './styles/element-ui.css'
-// 导入element ui
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
-import './utils/rem'
-import 'babel-polyfill'
+// 引入进度条样式
+import 'nprogress/nprogress.css'
 
-import Web3 from 'web3'
+//适配rem
+import './utils/lib-flexible'
 
-Vue.prototype.$web3 = new Web3(Web3.givenProvider)
+// 导入自己的全局样式
+import './assets/css/global.css'
 
 Vue.config.productionTip = false
 
-Vue.use(ElementUI)
-/* eslint-disable no-new */
+Vue.use(ElementUI);
+// router.afterEach((to, from, next) => {
+//   console.log('路由跳转了')
+//   window.scrollTo(0, 0);
+//   // chrome
+//   document.body.scrollTop = 0
+//   // firefox
+//   document.documentElement.scrollTop = 0
+//   // safari
+//   window.pageYOffset = 0
+// });
+
 new Vue({
   router,
   render: h => h(App)

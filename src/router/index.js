@@ -1,51 +1,53 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-// import Layout from '@/layout'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+import Layout from '@/layout' //布局页
 
-export const baseRoutes = [
+Vue.use(VueRouter)
+
+// 通用页面, 这里的配置不需要权限
+export const constRouter = [
   {
-    path: '/',
-    redirect: '/home'
+    path: '',
+    component: Layout, //应用布局页
+    redirect: '/market',
   },
   {
-    path: '/home',
-    name: 'home',
-    component: () => import('@/layout/index'),
+    path: '/market',
+    component: Layout, //应用布局页
+    name: 'market',
     children: [
       {
-        path: '/about',
-        name: 'about',
-        component: () => import('@/views/about/index')
-      }, {
-        path: '/alpha',
-        name: 'alpha',
-        component: () => import('@/views/alpha/index')
-      }, {
-        path: '/create',
-        name: 'create',
-        component: () => import('@/views/create/index')
-      }, {
-        path: '/home',
-        name: 'home',
-        component: () => import('@/views/home/index')
-      }, {
-        path: '/map',
-        name: 'map',
-        component: () => import('@/views/map/index')
-      }, {
-        path: '/market',
+        path: '',
+        component: () => import('@/views/market/index.vue'),
         name: 'market',
-        component: () => import('@/views/market/index')
+      },
+      {
+        path: 'details',
+        component: () => import('@/views/market/details.vue'),
+        name: 'details',
+      }
+    ]
+  },
+  {
+    path: '/wallet',
+    component: Layout,
+    name: 'wallet',
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/wallet/index.vue'),
+        name: 'wallet',
       }
     ]
   }
 ]
-const createRouter = () => new Router({
-  scrollBehavior: () => ({y: 0}),
-  routes: baseRoutes
+
+const router = new VueRouter({
+  mode: 'hash',
+  routes: constRouter,
+  scrollBehavior: () => ({ y: 0 }), //路由跳转后页面回到顶部
 })
-const router = createRouter()
 
 export default router
+

@@ -1,345 +1,240 @@
+
 <template>
-  <div>
-    <div class="market-left">
-      <h2>Welcome to the NFT Marketplace</h2>
-      <h5>
-        Here you can search and buy creator's ASSETS with SAND to incorporate
-        them into your LAND
-      </h5>
-      <div style="text-align: right" class="market-nft-select-dev">
-        <span>Sort by</span>
-        <el-select
-          v-model="value"
-          class="market-nft-select"
-          :popper-append-to-body="false"
-          placeholder="请选择"
-        >
-          <el-option
-            class="market-nft-select"
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
+  <div class="page-view">
+    <transition name="fade">
+      <div v-show="headBtn" class="header-wrap">
+        <div class="title">Welcome to NFT game market</div>
+        <div class="discribe">
+          The city is building, and you are the creator !
+        </div>
+        <div @click="removeHead" class="remove-box">
+          <img src="../../assets/image/market/remove.png" alt="" />
+        </div>
+      </div>
+    </transition>
+    <div class="search-wrap">
+      <div class="search-box flex-center">
+        <img
+          class="search-img"
+          src="../../assets/image/market/search.png"
+          alt=""
+        />
+        <el-input
+          v-model="searchContent"
+          type="text"
+          placeholder="Search"
+          class="search-input"
+        ></el-input>
+        <div class="sort-box flex-center">
+          <span>Sort</span>
+          <img src="../../assets/image/market/bottomAction.png" alt="" />
+        </div>
+      </div>
+    </div>
+   <div class="tags-wrap flex-center">
+        <div class="left-box">Tags:</div>
+        <div class="right-box flex-center">
+          <el-button
+            @click="changeTag(i)"
+            class="item-tag"
+            :class="tagIndex == i ? 'item-tag-active' : 'item-tag-normal'"
+            v-for="(item, i) in tagsList"
+            :Key="`a${i}`"
+            >{{ item }}</el-button
           >
-          </el-option>
-        </el-select>
+        </div> 
       </div>
-      <div style="text-align: left">
-        <h3>NFTs For Sale</h3>
-      </div>
-      <div class="line"></div>
-      <div class="nft-list-div">
-        <el-row :gutter="35">
-          <el-col :span="6" v-for="o in 8" :key="o">
-            <div>
-              <el-card :body-style="{ padding: '30px' }" class="card-nft">
-                <img
-                  src="https://img-blog.csdnimg.cn/20201014180756928.png?x-oss-process=image/resize,m_fixed,h_64,w_64"
-                  class="nft-list-image"
-                />
-                <div>
-                  <span>BOBBY THE BODYBULL...</span>
-                  <el-row style="display: flex">
-                    <el-col
-                      :span="12"
-                      style="text-align: left; margin: 0px"
-                      class="nft-foot-left"
-                    >
-                      $22
-                    </el-col>
-                    <el-col
-                      :span="12"
-                      style="text-align: right; margin: 0px"
-                      class="nft-foot-right"
-                    >
-                      <el-button
-                        icon="el-icon-my-shop-add-shop"
-                        class="nft-foot-right-btn"
-                      >
-                      </el-button>
-                    </el-col>
-                  </el-row>
-                </div>
-              </el-card>
-            </div>
-          </el-col>
+      <div class="group-list">
+        <el-row>
+          <el-col :span="6" v-for="(item, index) in listData" :Key="`b${index}`"
+            ><div @click="navMarketDetails" class="group-item">
+              <img src="../../assets/image/market/goods.jpg" alt="" /></div
+          ></el-col>
         </el-row>
       </div>
-      <div class="block">
-        <el-pagination layout="prev, pager, next" :total="1000">
-        </el-pagination>
-      </div>
-    </div>
-    <div class="market-right">
-      <h3>SHOP</h3>
-      <el-collapse accordion class="market-nft-chose">
-        <el-collapse-item title="FOR SALE" name="1">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="NFT COLLECTIONS" name="2">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="NFT TYPE" name="3">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="BEHAVIORS" name="5">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="SLOTS" name="6">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="CATALYST" name="7">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="GEMS" name="8">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="BIOMES" name="9">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="TAGS" name="10">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-        <el-collapse-item title="COORDINATES" name="11">
-          <div>
-            <ul>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-              <li>test</li>
-            </ul>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
-    </div>
+    
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      options: [
-        {
-          value: 'Newest',
-          label: 'Newest'
-        },
-        {
-          value: 'Name(A-Z)',
-          label: 'Name(A-Z)'
-        },
-        {
-          value: 'Name(Z-A)',
-          label: 'Name(Z-A)'
-        },
-        {
-          value: 'Highest price',
-          label: 'Highest price'
-        },
-        {
-          value: 'Lowest price',
-          label: 'Lowest price'
-        }
-      ],
-      value: 'Newest'
+      headBtn: true,
+      searchContent: "",
+      tagsList: ["all", "art", "wearable", "weapon", "exterior"],
+      tagIndex: 0,
+      listData:[1,1,1,1,1,1,1,1]
+    };
+  },
+  created() {},
+  methods: {
+    changeTag(index) {
+      this.tagIndex = index;
+    },
+    removeHead() {
+      this.headBtn = false;
+    },
+    navMarketDetails(){
+      this.$router.push('/market/details')
+    }
+  },
+};
+</script>
+
+<style scoped lang="scss">
+.page-view {
+  padding: 20px 35px;
+}
+.header-wrap {
+  width: 100%;
+  height: 134px;
+  background: url(../../assets/image/market/headBg.jpg) no-repeat 100% 100%;
+  background-size: 100% 100%;
+  position: relative;
+  padding: 29px 30px 30px 43px;
+  margin-bottom: 6px;
+  .title {
+    font-size: 25px;
+    color: #abb3be;
+    opacity: 0.9;
+  }
+  .discribe {
+    font-size: 14px;
+    color: #abb3be;
+    opacity: 0.9;
+    margin-top: 10px;
+  }
+  .remove-box {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    img {
+      width: 14px;
+      height: 14px;
     }
   }
 }
-</script>
+.search-wrap {
+  padding: 14px 0 20px;
+  .search-box {
+    position: relative;
+    background: #0d4473;
+    width: 100%;
+    height: 26px;
+    border-radius: 4px;
+    padding: 0 10px;
+    .search-img {
+      width: 15px;
+      height: 15px;
+      margin-right: 2px;
+    }
+    .search-input {
+      font-size: 13px;
+      width: 60%;
+      opacity: 0.9;
+    }
+    .sort-box {
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 10;
+      width: 117px;
+      height: 26px;
+      border-radius: 4px;
+      background-color: #1e5c92;
+      padding: 0 11px 0 12px;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #b0b0cb;
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+.tags-wrap {
+  padding: 0px 0 8px;
+  .left-box {
+    font-size: 13px;
+    color: #fff;
+    margin-right: 20px;
+  }
+  .right-box {
+    .item-tag {
+      width: 56px;
+      height: 18px;
+      border-radius: 3px;
+      margin-right: 10px;
+      border: none;
+      font-size: 11px;
+      color: #bdccce;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .item-tag-active {
+      background: #2e7187;
+    }
+    .item-tag-normal {
+      background: #5a5a5a;
+    }
+  }
+}
+.group-list {
+  background: #0d4473;
+  border-radius: 7px;
+  padding: 8px 6px 6px;
+  margin-top: 6px;
+  .group-item {
+    width: 98%;
+    margin-bottom: 6px;
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+  }
+}
 
-<style scoped>
-.market-left {
-  width: 1500px;
-  float: left;
-  height: calc(100vh - 187px);
-  padding: 80px 0 50px 80px;
-  font-size: 14px;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: #000000;
-  text-align: center;
-  overflow: scroll;
-}
-h2 {
-  font-size: 48px;
-  font-family: PingFang SC;
-  font-weight: bold;
-  margin: 0;
-  line-height: 48px;
-  color: #000000;
-}
-h3 {
-  font-size: 30px;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: #000000;
-  line-height: 30px;
-  margin: 0;
-}
-h5 {
-  font-size: 20px;
-  margin: 0;
-  font-family: PingFang SC;
-  font-weight: 400;
-  color: #000000;
-  line-height: 58px;
-}
-.market-right {
-  width: 228.1px;
-  float: right;
-  padding-top: 46px;
-  padding-right: 20px;
-}
-.market-nft-select {
-  width: 214px;
-  height: 46px;
-  background: #000000;
-  border-radius: 10px;
-  text-align: center;
-}
-.market-nft-select >>> .el-input__inner {
-  background: inherit;
+.search-wrap /deep/ .el-input__inner {
+  background: transparent;
   border: none;
+  height: 30px;
+  padding-left: 5px;
+  color: #b0b0cb;
 }
-* >>> .el-select-dropdown {
-  background: #000000;
-  border-radius: 10px;
-  border: 1px solid #000000;
+.el-input.el-input__inner {
+  background-color: rgba(255, 255, 255, 0.247);
 }
-.market-nft-select >>> .el-select-dropdown >>> .el-popper {
-  border: none;
+.search-input::-webkit-input-placeholder {
+  font-size: 13px;
+  color: #b0b0cb;
+} /* 使用webkit内核的浏览器 */
+.search-input:-moz-placeholder {
+  font-size: 13px;
+  color: #b0b0cb;
+} /* Firefox版本4-18 */
+.search-input::-moz-placeholder {
+  font-size: 13px;
+  color: #b0b0cb;
+} /* Firefox版本19+ */
+.search-input:-ms-input-placeholder {
+  font-size: 13px;
+  color: #b0b0cb;
+} /* IE浏览器 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.2s ease;
 }
-.market-nft-select-dev {
-  margin-right: 67px;
-}
-.line {
-  width: 45rem;
-  border-bottom: 2px solid #cccccc;
-  margin-top: 23px;
-}
-.nft-list-div {
-  padding-right: 43px;
-  margin-top: 40px;
-}
-.nft-list-image {
-  width: 195px;
-  height: 260px;
-}
-
-.nft-list-div >>> .el-col {
-  margin-bottom: 50px;
-}
-.nft-foot-left {
-  font-size: 18px;
-  font-family: PingFang SC;
-  font-weight: bold;
-  color: #ea3323;
-  line-height: 55px;
-}
-.nft-foot-right {
-  border-radius: 1px;
-  line-height: 55px;
-  display: flex;
-  justify-content: end;
-}
-.nft-foot-right-btn {
-  width: 22px;
-  height: 22px;
-  padding: 0;
-  border: none;
-
-  align-self: center;
-}
-.card-nft {
-  background: linear-gradient(0deg, #fb4dc1, #724ee2);
-  padding: 2px;
-  border-radius: 10px;
-}
-.card-nft >>> .el-card__body {
-  background: #ffffff;
-  border-radius: 10px;
-}
-/*.card-nft::after{*/
-/*  position: absolute;*/
-/*  top: -1px; bottom: -1px;*/
-/*  left: -1px; right: -1px;*/
-/*  background: linear-gradient(0deg, #FB4DC1, #724EE2);*/
-/*  content: '';*/
-/*  z-index: -1;*/
-/*  border-radius: 10px;*/
-/*}*/
-.market-nft-chose {
-  border: 1px solid #cccccc;
-  margin-top: 15px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #000000;
-}
-.market-nft-chose >>> .el-collapse-item__header {
-  border-bottom: 1px solid #cccccc;
-  padding-left: 25px;
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
 }
 </style>
